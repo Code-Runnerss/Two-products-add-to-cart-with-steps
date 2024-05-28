@@ -1,0 +1,1482 @@
+<script>
+   
+  // orignal-1
+  $(document).ready(function(){
+    $('ul.tabs li.uw').click(function(){
+      var tab_id = $(this).attr('data-tab');
+      var tab_id_img = $(this).attr('data-tab-img');
+      var tab_id_img_3 = $(this).attr('data-tab-img-3');
+      var tab_id_st = $(this).attr('data-tab-st');
+      
+      $('ul.tabs li.uw').removeClass('current');
+      $('.tab-content').removeClass('current');
+       $('.open-img').removeClass('current');
+      $('page-3-img').removeClass('current');
+
+      $(this).addClass('current');
+      $("#"+tab_id).addClass('current');
+      $("#"+tab_id_img).addClass('current');
+      $("#"+tab_id_img_3).addClass('current');
+      $("#"+tab_id_st).addClass('current');
+    })
+  });
+  // end orignal 
+    // orignal-2
+  $(document).ready(function(){
+    $('ul.tabs li.nb').click(function(){
+      var tab_idb = $(this).attr('data-tab-b');
+      var tab_id_imgb = $(this).attr('data-tab-img-b');
+      var tab_id_img_3s = $(this).attr('data-tab-img-3s');
+      var tab_id_bw = $(this).attr('data-tab-bw');
+      
+      $('ul.tabs li.nb').removeClass('current-b');
+      $('.tab-content-b').removeClass('current-b');
+       $('.open-img-b').removeClass('current-b');
+      
+      $(this).addClass('current-b');
+      $("#"+tab_idb).addClass('current-b');
+      $("#"+tab_id_imgb).addClass('current-b');
+      $("#"+tab_id_img_3s).addClass('current-b');
+      $("#"+tab_id_bw).addClass('current-b');
+    })
+  });
+  // end orignal
+  // page-1 button
+    $(document).ready(function(){
+    $('.next-button-1').click(function(){
+      $('#page-2').removeClass('hidden');
+      $("#page-2").addClass('current-page');
+      $("#page-1").addClass('hidden');
+    })
+      $('.next-button-2').click(function(){
+      $('#page-3').removeClass('hidden');
+      $("#page-3").addClass('current-page');
+      $("#page-2").addClass('hidden');
+    })
+  });
+  //end page-1 button 
+ // page-2 button
+  //end page-1 button 
+
+$(document).ready(function(){
+ function updateTotalPrice() {
+    var priceValue1 = $('.total-price-match').attr('data-price--1');
+    var priceValue2 = $('.total-price-match').attr('data-price--2');
+    
+    // Parse the values to integers
+    var value1 = parseInt(priceValue1 || 0);
+    var value2 = parseInt(priceValue2 || 0);
+    
+    // Calculate the sum
+    var totalPrice = value1 + value2;
+
+    // Update the text content of total-price-match with the total
+    $('.total-price-match').text("Rs:" + totalPrice);
+  }
+  // Check if tab 1 is already selected on page load
+  if ($('ul.tabs li.u.current-u').length > 0) {
+    var tab_id_price_2 = $('ul.tabs li.u.current-u').attr('data-tab-price-u');
+    $('.total-price-match').attr('data-price--1', $('#' + tab_id_price_2).data('tab-price2'));
+  }
+
+  // Check if tab 3 is already selected on page load
+  if ($('ul.tabs li.u3.current-u3').length > 0) {
+    var tab_id_price = $('ul.tabs li.u3.current-u3').attr('data-tab-price');
+    $('.total-price-match').attr('data-price--2', $('#' + tab_id_price).data('tab-price1'));
+  }
+  // Click event handler for tab 1
+  $('ul.tabs li.u').click(function(){
+    var tab_idu = $(this).attr('data-tab-u');
+    var tab_id_imgu = $(this).attr('data-tab-img-u');
+    var tab_id_swatch2 = $(this).attr('data-tab-swatch-2');
+    var tab_id_swatch_name_2 = $(this).attr('data-tab-swatch-name-u');
+    var tab_id_price_2 = $(this).attr('data-tab-price-u');
+
+    $('ul.tabs li.u').removeClass('current-u');
+    $('.tab-content-u').removeClass('current-u');
+    $('.open-img-u').removeClass('current-u');
+    $('page-3-img-u').removeClass('current-u');
+
+    $(this).addClass('current-u');
+    $("#" + tab_idu).addClass('current-u');
+    $("#" + tab_id_imgu).addClass('current-u');
+    $("#" + tab_id_swatch2).addClass('current-u');
+    $("#" + tab_id_swatch_name_2).addClass('current-u');
+    $("#" + tab_id_price_2).addClass('current-u');
+
+    $('.total-price-match').attr('data-price--1', $(this).data('tab-price2'));
+     if (!$('ul.tabs li.u3').hasClass('current-u3')) {
+      $('.total-price-match').removeAttr('data-price--2');
+    }
+    
+
+    // Call the function to update total price
+    updateTotalPrice();
+  });
+
+  // Click event handler for tab 3
+  $('ul.tabs li.u3').click(function(){
+    var tab_idu3 = $(this).attr('data-tab-u3');
+    var tab_id_imgu3 = $(this).attr('data-tab-img-u3');
+    var tab_id_swatch = $(this).attr('data-tab-swatch');
+    var tab_id_swatch_name = $(this).attr('data-tab-swatch-name');
+    var tab_id_price = $(this).attr('data-tab-price');
+
+    $('ul.tabs li.u3').removeClass('current-u3');
+    $('.tab-content-u3').removeClass('current-u3');
+    $('.open-img-u3').removeClass('current-u3');
+    $('page-3-img-u3').removeClass('current-u3');
+
+    $(this).addClass('current-u3');
+    $("#"+tab_idu3).addClass('current-u3');
+    $("#"+tab_id_imgu3).addClass('current-u3');
+    $("#"+tab_id_swatch).addClass('current-u3');
+    $("#"+tab_id_swatch_name).addClass('current-u3');
+    $("#"+tab_id_price).addClass('current-u3');
+    $('.total-price-match').attr('data-price--2', $(this).data('tab-price1'));
+
+    // If tab 1 is not selected, remove data-price--1 attribute
+    if (!$('ul.tabs li.u').hasClass('current-u')) {
+      $('.total-price-match').removeAttr('data-price--1');
+    }
+
+    // Call the function to update total price
+    updateTotalPrice();
+  });
+   updateTotalPrice();
+});
+
+  // size class add 
+$(".size-option").click(function(){
+  // Remove 'selected-size' class from all size options
+  $('.size-option').removeClass('selected-size');
+  
+  // Add 'selected-size' class to the clicked size option
+  $(this).addClass('selected-size');
+});
+  
+
+// display topwear selected size on last step //
+  
+$(document).ready(function(){
+  function updateSelectedSize(size) {
+    $('.selected-topwear-size').text(size);
+  }
+
+  $(".once").click(function(){
+    $('.once').removeClass('selected-size');
+    $(this).addClass('selected-size');
+    var selectedSize = $(this).text();
+    updateSelectedSize(selectedSize);
+  });
+
+  function initializeSelectedSize() {
+    var defaultSize1 = $('.once').first().text(); 
+    updateSelectedSize(defaultSize1);
+  }
+
+  initializeSelectedSize();
+});
+
+// display bottomwear selected size on last step
+  
+$(document).ready(function(){
+  function updateSelectedSize(size) {
+    $('.selected-bottomwear-size').text(size);
+  }
+
+  $(".size-option").click(function(){
+    $('.size-option').removeClass('selected-size');
+    $(this).addClass('selected-size');
+    var selectedSize = $(this).text();
+    updateSelectedSize(selectedSize);
+  });
+
+  function initializeSelectedSize() {
+    var defaultSize2 = $('.size-option').first().text(); 
+    updateSelectedSize(defaultSize2);
+  }
+  initializeSelectedSize();
+});
+
+  document.addEventListener('DOMContentLoaded', function() {
+   
+let productId1 = null;
+
+document.querySelectorAll('[data-product1-id]').forEach(function(element) {
+    element.addEventListener('click', function() {
+        const size1 = document.querySelector('.selected-topwear-size').textContent;
+        const firstChar = String(size1).toLowerCase();
+        switch (firstChar) {
+            case 'xs':
+                productId1 = element.getAttribute('xs');
+                break;
+            case 's':
+                productId1 = element.getAttribute('s');
+                break;
+            case 'm':
+                productId1 = element.getAttribute('m');
+                break;
+            case 'l':
+                productId1 = element.getAttribute('l');
+                break;
+            case 'xl':
+                productId1 = element.getAttribute('xl');
+                break;
+            case '2xl':
+                productId1 = element.getAttribute('2xl');
+                break;
+            case '3xl':
+                productId1 = element.getAttribute('3xl');
+                break;
+            case '4xl':
+                productId1 = element.getAttribute('4xl');
+                break;
+            case '5xl':
+                productId1 = element.getAttribute('5xl');
+                break;
+            default:
+              productId1 = element.getAttribute(`${firstChar}`);
+                console.log('No matching size attribute found for firstChar:', firstChar);
+                break;
+        }
+        document.getElementById('product1').textContent = 'Product ID1: ' + productId1;
+    });
+});
+let productId2 = null;
+
+document.querySelectorAll('[data-product2-id]').forEach(function(element) {
+    element.addEventListener('click', function() {
+        const size2 = document.querySelector('.selected-bottomwear-size').textContent;
+        const lastChar = String(size2).toLowerCase();
+
+        switch (lastChar) {
+            case 'xs':
+                productId2 = element.getAttribute('xs');
+                break;
+            case 's':
+                productId2 = element.getAttribute('s');
+                break;
+            case 'm':
+                productId2 = element.getAttribute('m');
+                break;
+            case 'l':
+                productId2 = element.getAttribute('l');
+                break;
+            case 'xl':
+                productId2 = element.getAttribute('xl');
+                break;
+            case '2xl':
+                productId2 = element.getAttribute('2xl');
+                break;
+            case '3xl':
+                productId2 = element.getAttribute('3xl');
+                break;
+            case '4xl':
+                productId2 = element.getAttribute('4xl');
+                break;
+            case '5xl':
+                productId2 = element.getAttribute('5xl');
+                break;
+            default:
+
+                 productId2 = element.getAttribute(`${lastChar}`);
+                console.log('No matching size attribute found for firstChar:', lastChar);
+                break;
+        }
+
+        document.getElementById('product2').textContent = 'Product ID2: ' + productId2;
+    });
+});
+    document.getElementById('add-to-cart-button').addEventListener('click', function(e) {
+        e.preventDefault();
+        if (!productId1 && !productId2) {
+            console.error('No product selected.');
+            return;
+        }
+        addProductsToCart(productId1, productId2);
+    });
+
+    function addProductsToCart(productId1, productId2) {
+        const products = [];
+
+        // Add product1 to the array if it's selected
+        if (productId1) {
+            products.push({ id: productId1, quantity: 1});
+        }
+
+        // Add product2 to the array if it's selected
+        if (productId2) {
+            products.push({ id: productId2, quantity: 1 });
+        }
+        fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ items: products })
+        })
+        .then(response => response.json())
+        .then(data => {
+           console.log('Products added to cart successfully');
+          $(document).ready(function () {
+            $('cart-drawer').load(location.href + " #CartDrawer");
+            $('#cart-icon-bubble').load(location.href + " #cart-icon-bubble");
+             $("cart-drawer").removeClass('is-empty');
+            $(".drawer__inner-empty").removeClass('hide');
+              setTimeout(function(){ 
+                $(".drawer").addClass('active');
+              }, 600);
+          });
+        })
+        .catch(error => {
+            console.error('Error adding products to cart:', error);
+        });
+    }
+});
+
+$(document).ready(function () {
+        $('.once').click(function () {
+           
+            $('.once').removeClass('active');
+            
+            $(this).addClass('active');
+
+            $('.next-button-1').show();
+        });
+    });
+  $(document).ready(function () {
+        $('.opt-t').click(function () {
+            
+            $('.opt-t').removeClass('active');
+            
+            $(this).addClass('active');
+
+            $('.next-button-2').show();
+        });
+    });
+
+</script>
+<div class='page-width main-body'>
+<link rel="stylesheet" href="striper.css">
+<!--step-1-->
+
+
+  <!-- block -->
+   {%- for block in section.blocks -%}
+     {% if forloop.index == 1 %}
+   {% if block.settings.collection != blank  %}
+   <div id="page-{{ forloop.index }}" class="grid ">
+        <div class="grid__item img-block center">
+         {% assign products = block.settings.collection.products %}
+          <!-- prouct img -->
+          {%- for product in products -%}
+            {% if forloop.index == 1 %}
+               <div id="tab-{{ forloop.index }}-new" class="tab-content open-img current">
+              <img class="image" src="{{ product.featured_media | img_url:'master' }}" width='100%' height="auto" alt="{{ product.title }}">
+               </div>
+              {% else %}
+               <div id="tab-{{ forloop.index }}-new" class="tab-content ">
+                <img class="image" src="{{ product.featured_media | img_url:'master' }}" width='100%' height="auto" alt="{{ product.title }}">
+               </div>
+              {% endif %}
+          {%- endfor -%}
+          <!-- end product img -->
+        </div>
+      <div class="grid__item">
+        <div class="heading-text">
+        <h3 class="top-text">{{ block.settings.collection.title }}</h3>
+        <h6 class="bottom-text">{{ block.settings.collection.description }}</h6>
+      </div>
+        <h3 class="grid__item-text">Selected Style :</h3>
+        <!-- tabs -->
+        <ul class="tabs">
+          <div class="style-child">
+               {% assign products = block.settings.collection.products %}
+                {%- for product in products -%}
+                    <li class="tab-link uw" data-tab="tab-{{ forloop.index }}" data-tab-st="tab-{{ forloop.index }}-new-s" data-tab-img="tab-{{ forloop.index }}-new" data-tab-img-3="tab-{{ forloop.index }}-new-3">
+                        <div class="style-option">
+                          <div class="type_icon_wrapper">
+                              <img src="{{ product.metafields.custom.swatche_png | img_url:master }}&width=40" class="topwear-image" alt="{{ product.title }}" style="max-width: 100px;">
+                          </div>
+                          <p>{{ product.title }}</p>
+                        </div>
+                    </li>
+                 {% endfor %}
+            </div>
+      	</ul>
+        <!--endtab  -->
+      <div class="size-list">
+        <!-- tab-content -->
+            <!-- block -->
+        {%- for block in section.blocks -%}
+             {% if block.settings.collection != blank %}
+               {% assign products = block.settings.collection.products %}
+               <!-- product -->
+                {%- for product in products -%}
+                  
+                  <div id="tab-{{ forloop.index }}" class="tab-{{ forloop.index }} tab-content">
+                     <h3 class="size-popup">Available Sizes:<div class="size-guide" onclick="openPopup()">VIEW SIZE GUIDE</div></h3>
+                    <div class="sizes">
+                       {%- for option in product.options_with_values -%}
+                         <!-- varinat -->
+                         {%- for value in option.values -%}
+                            <div class="size-option once">{{ value }}</div>
+                          {% endfor %}
+                         <!--variant  -->
+                      {% endfor %}
+                       </div>
+                      <button class="next-button-1 next-button" style="display:none">Next</button>
+                  </div>
+              {% endfor %}
+               <!-- endproduct -->
+          {% endif %}
+      {% endfor %}
+        <!-- endblock -->
+      <!--end tab-content  -->
+      </div>
+    </div>
+  </div>
+      {% endif %}
+       {% endif %}
+  {% endfor %}
+  <!--endblock  -->
+<!--step-2-->
+          <!-- block -->
+   {%- for block in section.blocks -%}
+     {% if forloop.index == 2 %}
+   {% if block.settings.collection != blank  %}
+   <div id="page-{{ forloop.index }}" class="grid hidden">
+        <div class="grid__item img-block">
+         {% assign productsb = block.settings.collection.products %}
+          <!-- prouct img -->
+          {%- for product in productsb -%}
+            {% if forloop.index == 1 %}
+               <div id="tab-{{ forloop.index }}-new-b" class="tab-content-b open-img-b current-b">
+              <img class="image" src="{{ product.featured_media | img_url:'master' }}" width='100%' height="auto" alt="{{ product.title }}">
+               </div>
+              {% else %}
+               <div id="tab-{{ forloop.index }}-new-b" class="tab-content-b">
+                <img class="image" src="{{ product.featured_media | img_url:'master' }}" width='100%' height="auto" alt="{{ product.title }}">
+               </div>
+              {% endif %}
+          {%- endfor -%}
+          <!-- end product img -->
+        </div>
+      <div class="grid__item">
+        <div class="heading-text">
+        <h3 class="top-text">{{ block.settings.collection.title }}</h3>
+        <h6 class="bottom-text">{{ block.settings.collection.description }}</h6>
+      </div>
+        <h3 class="grid__item-text">Selected Style :</h3>
+        <!-- tabs -->
+        <ul class="tabs">
+          <div class="style-child">
+               {% assign productsb = block.settings.collection.products %}
+                {%- for product in products -%}
+                    <li class="tab-link nb" data-tab-b="tab-{{ forloop.index }}-b" data-tab-bw="tab-{{ forloop.index }}-bw-b" data-tab-img-b="tab-{{ forloop.index }}-new-b" data-tab-img-3s="tab-{{ forloop.index }}-new-bs">
+                        <div class="style-option">
+                          <div class="type_icon_wrapper">
+                              <img src="{{ product.metafields.custom.swatche_png | img_url:master }}&width=40" class="bottomwear-image" alt="{{ product.title }}" style="max-width: 100px;">
+                          </div>
+                          <p>{{ product.title }}</p>
+                        </div>
+                    </li>
+                 {% endfor %}
+            </div>
+      	</ul>
+        <!--endtab  -->
+      <div class="size-list">
+        <!-- tab-content -->
+            <!-- block -->
+        {%- for block in section.blocks -%}
+             {% if block.settings.collection != blank %}
+               {% assign productsb = block.settings.collection.products %}
+               <!-- product -->
+                {%- for product in productsb -%}
+                  
+                  <div id="tab-{{ forloop.index }}-b" class="tab-content-b">
+                     <!-- <h3 class="size-popup">Available Sizes:<div class="size-guide" onclick="openPopup()">VIEW SIZE GUIDE</div></h3> -->
+                    <div class="sizes">
+                       {%- for option in product.options_with_values -%}
+                         <!-- varinat -->
+                         {%- for value in option.values -%}
+                            <div class="size-option opt-t">{{ value }}</div>
+                          {% endfor %}
+                         <!--variant  -->
+                      {% endfor %}
+                      </div>
+                      <button class="next-button-2 next-button" style="display:none">Next</button>
+                  </div>
+              {% endfor %}
+               <!-- endproduct -->
+          {% endif %}
+      {% endfor %}
+        <!-- endblock -->
+      <!--end tab-content  -->
+      </div>
+    </div>
+  </div>
+
+      {% endif %}
+       {% endif %}
+  {% endfor %}
+  <!--endblock  -->
+<!--step-3-->
+     <div id="page-3" class="grid hidden">
+        <div class="grid__item img-block">
+           {%- for block in section.blocks -%}
+              {% if forloop.index == 1 %}
+         {% assign products = block.settings.collection.products %}
+          <!-- prouct img -->
+             
+          {%- for product in products -%}
+            <div id="tab-{{ forloop.index }}-new-3" class="tab-content open-img page-3-img ">
+               {% for products in product.metafields.custom.product_list_color.value %}
+                  {% if forloop.index == 1 %}
+               <div id="tab-{{ forloop.index }}-u3-{{ product.id }}" class="tab-content-u3 open-img page-img current-u3" >
+              <img class="image" src="{{ products.featured_media | img_url:'master' }}" width='100%' height="auto" alt="{{ product.title }}">
+               </div>
+              {% else %}
+               <div id="tab-{{ forloop.index }}-u3-{{ product.id }}" class="tab-content-u3">
+                <img class="image" src="{{ products.featured_media | img_url:'master' }}" width='100%' height="auto" alt="{{ product.title }}">
+               </div>
+                  {% endif %}
+                 {% endfor %}
+               </div>
+          {%- endfor -%}
+            
+          <!-- end product img -->
+                  {% endif %}
+              {% if forloop.index == 2 %}
+                {% assign productsw = block.settings.collection.products %}
+                <!-- prouct img -->
+                   
+                {%- for product in productsw -%}
+                  <div id="tab-{{ forloop.index }}-new-bs" class="tab-content-b open-img-bs page-3-img-bs">
+                     {% for products in product.metafields.custom.product_list_color.value %}
+                        {% if forloop.index == 1 %}
+                     <div id="tab-{{ forloop.index }}-u-{{ product.id }}" class="tab-content-u open-img-u page-img-u current-u" >
+                    <img class="image" src="{{ products.featured_media | img_url:'master' }}" width='100%' height="auto" alt="{{ product.title }}">
+                     </div>
+                    {% else %}
+                     <div id="tab-{{ forloop.index }}-u-{{ product.id }}" class="tab-content-u">
+                      <img class="image" src="{{ products.featured_media | img_url:'master' }}" width='100%' height="auto" alt="{{ product.title }}">
+                     </div>
+                        {% endif %}
+                       {% endfor %}
+                     </div>
+                {%- endfor -%}
+                {% endif %}
+             {% endfor %}
+        </div>
+       <div>
+         <div class="heading-texts">
+          <h3 class="top-texts">What underwear style do you wear?</h3>
+          <h6 class="bottom-texts">Pick your size and style of underwear for the set.</h6>
+        </div>
+         <!-- <h3>Selected Style :</h3> -->
+         <div>
+           <div>
+             <!-- block -->
+             <ul class="tabs">
+            {%- for block in section.blocks -%}
+              {% assign products = block.settings.collection.products %}
+                {% if forloop.index == 1 %}
+            <!-- prouct color -->
+                 
+                  {%- for product in products -%}
+                   
+                   <div id="tab-{{ forloop.index }}-new-s" class="tab-content">
+                     
+                     <div class="data ">
+                        <div class="swatch-heads">
+                         
+                        
+                        {% for products in product.metafields.custom.product_list_color.value %}
+                         {% if forloop.index == 1 %}
+                           <div id="tab-{{ forloop.index }}-swatch-{{ product.id }}" class=" tab-content-u3 open-img page-img current-u3" >
+                                <img  width="50" height="33" class="type_icons inline-blocks image" src="{{ products.featured_media | img_url:'master' }}" alt="{{ product.title }}">
+                           </div>
+                          {% else %}
+                           <div id="tab-{{ forloop.index }}-swatch-{{ product.id }}" class="tab-content-u3">
+                                <img  class="type_icons inline-blocks image" src="{{ products.featured_media | img_url:'master' }}"  width="50" height="33"  alt="{{ product.title }}">
+                           </div>
+                        {% endif %}
+                       {% endfor %}
+                          </div>
+                      <p class="data-opt">{{ product.title }},</p>
+                      <p class="data-opt-one"><span class="selected-topwear-size"></span></p>
+                    </div>
+                      <!-- <h3 class="data">{{ product.title }}</h3>  -->
+                    <!--color  -->
+                       <div class="style-child tab-component review">
+                         
+                              <!-- ststic code -->
+                             {% assign camp = 0 %}
+                             {% assign camp2 = 0 %}
+                             {% assign camp3 = 0 %}
+                             {% assign camp4 = 0 %}
+                              {% for product in product.metafields.custom.product_list_color.value %}
+                              
+                              {% for tags-n in product.tags %}
+                              {% if tags-n == "All" %}
+                                {% assign camp = camp | plus: 1 %}
+                                {% endif %}
+                                  {% if tags-n == "PRINTS" %}
+                                {% assign camp2 = camp2 | plus: 1 %}
+                                {% endif %}
+                                  {% if tags-n == "solids" %}
+                                {% assign camp3 = camp3 | plus: 1 %}
+                                {% endif %}
+                                  {% if tags-n == "new" %}
+                                {% assign camp4 = camp4 | plus: 1 %}
+                                {% endif %}
+                                {% endfor %}
+                              
+                              {% endfor %}
+        
+                       <div class="tabs flex gap-8 justify-start preview_name" style="height: auto!important;">                             
+                                <div class="type_button">
+                                    <button class="tab-button  {{ product.title | remove: " " }} active" data-name="All">
+                                        <span class="rte mb-4 text-color-black" style="font-style:normal; font-weight:600;word-wrap: break-word;">ALL
+                                          <span class="design-count">({{ camp }})</span></span>         
+                                    </button>
+                                </div>
+                                <div class="type_button   ">
+                                    <button class="tab-button {{ product.title | remove: " " }}" data-name="PRINTS">
+                                        <span class="rte mb-4 text-color-black" style="font-style:normal; font-weight:600;word-wrap: break-word;">PRINTS
+                                          <span class="design-count">({{ camp2 }})</span></span>         
+                                    </button>
+                                </div>
+                                <div class="type_button  ">
+                                    <button class="tab-button  {{ product.title | remove: " " }}" data-name="solids">
+                                        <span class="rte mb-4 text-color-black" style="font-style:normal; font-weight:600;word-wrap: break-word;">SOLIDS
+                                          <span class="design-count">({{ camp3 }})</span></span>         
+                                    </button>
+                                </div>
+                                <div class="type_button  ">
+                                    <button class="tab-button {{ product.title | remove: " " }} " data-name="new">
+                                        <span class="rte mb-4 text-color-black" style="font-style:normal; font-weight:600; word-wrap: break-word;">NEW
+                                          <span class="design-count">({{ camp4 }})</span></span>         
+                                    </button>
+                                </div>         
+                              </div>
+                        <script>
+                            $(document).ready(function(){
+                                $('.tab-button.{{ product.title | remove: " " }}').click(function(){
+                                    var name = $(this).data('name');
+                        
+                                    // Hide all spans
+                                    $('.tab-link.{{ product.title | remove: " " }}').addClass('hidden');
+                        
+                                    // Show spans with the corresponding class
+                                    $('.tab-link.{{ product.title | remove: " " }}.' + name).removeClass('hidden');
+                        
+                                    // Toggle active class on tab buttons
+                                    $('.tab-button.{{ product.title | remove: " " }}').removeClass('active');
+                                    $(this).addClass('active');
+                                });
+                            });
+                        </script>
+  <!-- ststic code -->                 
+                       <div class="tab-context">
+                         <div class="flex flex-wrap flex-col active block">
+                           <div class="preview-variant text-left mt-4">
+                             <div class="prod__option prod__option--button">
+                               <!--all  -->
+                               <div class="flex product-design-option preview-variant-inner">                      
+                                  {% for products in product.metafields.custom.product_list_color.value %}
+                                 <!-- swatch -->
+                                       <li class="tab-link {{ product.title | remove: " " }} u3 {% for tag in products.tags %}{{ tag | append:' '}}{% endfor %}"   {%- for option in products.options_with_values -%} {%- for variant in products.variants -%} {{ variant.title | upcase}} ="{{ variant.id }}"{% endfor %}{% endfor %} data-product1-id="{{ products.selected_or_first_available_variant.id }}" data-tab-u3="tab-{{ forloop.index }}-u3-{{ product.id }}" data-tab-swatch="tab-{{ forloop.index }}-swatch-{{ product.id }}"  data-tab-swatch-name="product-swatch-name-{{ forloop.index}}-{{ product.id }}" data-tab-price1="{{ products.price | divided_by:100 }}" data-tab-price="product-price-{{ forloop.index}}-{{ product.id }}" >
+                                       <div product-data="{{ products.url }}">
+                                   
+                                        <button class="color-button">
+                                           <img src="{{ products.metafields.custom.swatche_png | img_url:'master' }}&width=50" width='50' class="color-img" height="auto" />
+                                        </button>
+                                       </div>
+                                       </li>
+                                 <!--end-swatch  -->
+                                    {% endfor %}
+                                  </div>
+                               <!--end all  -->
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                         <div class="m-product-option--label">
+                          <div>
+                            <label class="option-label">
+                            <span class="type-label--title">Selected Color :&nbsp;</span>
+                            <span class="type-label--selected">{% for products in product.metafields.custom.product_list_color.value %}
+                               {% assign name-color =  products.title | split:"-" | last %} 
+                                {% if forloop.index == 1 %}
+                                    <p id="product-swatch-name-{{ forloop.index}}-{{ product.id }}" class="tab-content-u3 current-u3">{{ name-color }}</p>
+                                 {% else %}
+                                   <p id="product-swatch-name-{{ forloop.index}}-{{ product.id }}" class="tab-content-u3">{{ name-color }}</p>
+                                {% endif %}
+                              {% endfor %}
+                            </span>
+                            </label>
+                          </div>
+                           <div class="price-box">
+                              <span class="">Rs.</span>
+                              {% for products in product.metafields.custom.product_list_color.value %}
+                                  {% assign price = products.price | divided_by:100 %}
+                                  {% if forloop.index == 1 %}
+                                      <span id="product-price-{{ forloop.index}}-{{ product.id }}" data-price-1u="{{ price }}" class="page-step-2-price tab-content-u3 current-u3">{{ price }}</span>
+                                  {% else %}
+                                      <span id="product-price-{{ forloop.index}}-{{ product.id }}" data-price-1u="{{ price }}" class="page-step-2-price tab-content-u3">{{ price }}</span>
+                                  {% endif %}
+                              {% endfor %}
+                          </div>
+                            </div>
+                           </div>
+                        </div>
+                    <!--end color  -->
+          
+                    {% endfor %}
+                       
+                 {% endif %}
+                {% if forloop.index == 2 %}
+                   {% assign productsw = block.settings.collection.products %}
+                  {%- for product in productsw -%}  
+                    <div id="tab-{{ forloop.index }}-bw-b" class="tab-content-b">
+                    <!--color  -->
+                      <div class="data ">
+                      <div class="swatch-heads">
+                         
+                        {% for products in product.metafields.custom.product_list_color.value %}
+                         {% if forloop.index == 1 %}
+                           <div id="tab-{{ forloop.index }}-swatch-2-{{ product.id }}" class=" tab-content-u open-img page-img current-u" >
+                                <img  width="50" height="33" class="type_icons inline-blocks image" src="{{ products.featured_media | img_url:'master' }}" alt="{{ product.title }}">
+                           </div>
+                          {% else %}
+                           <div id="tab-{{ forloop.index }}-swatch-2-{{ product.id }}" class="tab-content-u">
+                                <img  class="type_icons inline-blocks image" src="{{ products.featured_media | img_url:'master' }}"  width="50" height="33"  alt="{{ product.title }}">
+                           </div>
+                        {% endif %}
+                       {% endfor %}
+                          </div>
+                      <p class="data-opt">{{ product.title }},</p>
+                      <p class="data-opt-one"><span class="selected-bottomwear-size"></span></p>
+                    </div>
+          
+                        {% assign kamp = 0 %}
+                         {% assign kamp2 = 0 %}
+                         {% assign kamp3 = 0 %}
+                         {% assign kamp4 = 0 %}
+                        {% for product in product.metafields.custom.product_list_color.value %}
+                        
+                        {% for tags-n in product.tags %}
+                        {% if tags-n == "All" %}
+                          {% assign kamp = kamp | plus: 1 %}
+                          {% endif %}
+                            {% if tags-n == "PRINTS" %}
+                          {% assign kamp2 = kamp2 | plus: 1 %}
+                          {% endif %}
+                            {% if tags-n == "solids" %}
+                          {% assign kamp3 = kamp3 | plus: 1 %}
+                          {% endif %}
+                            {% if tags-n == "new" %}
+                          {% assign kamp4 = kamp4 | plus: 1 %}
+                          {% endif %}
+                          {% endfor %}
+                        
+                        {% endfor %}
+                       <div class="style-child tab-component review">
+   <!-- ststic code -->
+                       <div class="tabs flex gap-8 justify-start preview_name" style="height: auto!important;">                             
+                                <div class="type_button">
+                                    <button class="tab-button {{ product.title | remove: " " }} active" data-name="All">
+                                        <span class="rte mb-4 text-color-black" style="font-style:normal; font-weight:600;word-wrap: break-word;">ALL<span class="design-count">({{ kamp }})</span></span>         
+                                    </button>
+                                </div>
+                                <div class="type_button   ">
+                                    <button class="tab-button {{ product.title | remove: " " }}" data-name="PRINTS">
+                                        <span class="rte mb-4 text-color-black" style="font-style:normal; font-weight:600;word-wrap: break-word;">PRINTS<span class="design-count">({{ kamp2 }})</span></span>         
+                                    </button>
+                                </div>
+                                <div class="type_button   ">
+                                    <button class="tab-button {{ product.title | remove: " " }}" data-name="solids">
+                                        <span class="rte mb-4 text-color-black" style="font-style:normal; font-weight:600;word-wrap: break-word;">SOLIDS<span class="design-count">({{ kamp3 }})</span></span>         
+                                    </button>
+                                </div>
+                                <div class="type_button   ">
+                                    <button class="tab-button {{ product.title | remove: " " }}" data-name="new">
+                                        <span class="rte mb-4 text-color-black" style="font-style:normal; font-weight:600; word-wrap: break-word;">NEW<span class="design-count">({{ kamp4 }})</span></span>         
+                                    </button>
+                                </div>         
+                        </div>
+                           <script>
+                              $(document).ready(function(){
+                                  $('.tab-button.{{ product.title | remove: " " }}').click(function(){
+                                      var name = $(this).data('name');
+                          
+                                      // Hide all spans
+                                      $('.tab-link.{{ product.title | remove: " " }}').addClass('hidden');
+                          
+                                      // Show spans with the corresponding class
+                                      $('.tab-link.{{ product.title | remove: " " }}.' + name).removeClass('hidden');
+                          
+                                      // Toggle active class on tab buttons
+                                      $('.tab-button.{{ product.title | remove: " " }}').removeClass('active');
+                                      $(this).addClass('active');
+                                  });
+                              });
+                          </script>
+  <!-- ststic code --> 
+                         <div class="tab-context">
+                         <div class="flex flex-wrap flex-col active block">
+                           <div class="preview-variant text-left mt-4">
+                             <div class="prod__option prod__option--button">
+                               <!-- all -->
+                               <div class="flex product-design-option preview-variant-inner"> 
+                               {% for products in product.metafields.custom.product_list_color.value %}
+                             <!-- swatch -->
+                                   <li class="tab-link {{ product.title | remove: " " }} u {% for tag in products.tags %}{{ tag | append:' '}}{% endfor %}"  {%- for option in products.options_with_values -%} {%- for variant in products.variants -%} {{ variant.title | upcase}}="{{ variant.id }}"{% endfor %}{% endfor %} data-product2-id="{{ products.selected_or_first_available_variant.id }}" data-tab-u="tab-{{ forloop.index }}-u-{{ product.id }}" data-tab-swatch-2="tab-{{ forloop.index }}-swatch-2-{{ product.id }}" data-tab-swatch-name-u="product-swatch-name-{{ forloop.index}}-{{ product.id }}-2" data-tab-price2="{{ products.price | divided_by:100 }}" data-tab-price-u="product-price-{{ forloop.index}}-{{ product.id }}-2" >
+                                   <div product-data="{{ products.url }}">
+                               
+                                   <button class="color-button">
+                                       <img src="{{ products.metafields.custom.swatche_png | img_url:'master' }}&width=50" width='50' class="color-img" height="auto" />
+                                    </button>
+                                   </div>
+                                   </li>
+                             <!--end-swatch  -->
+                                {% endfor %}
+                                </div>
+                               <!-- end all  -->
+
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                         <div class="m-product-option--label">
+                          <div>
+                            <label class="option-label">
+                            <span class="type-label--title">Selected Color :&nbsp;</span>
+                            <span class="type-label--selected">{% for products in product.metafields.custom.product_list_color.value %}
+                               {% assign name-color =  products.title | split:"-" | last %} 
+                                {% if forloop.index == 1 %}
+                                    <p id="product-swatch-name-{{ forloop.index}}-{{ product.id }}-2" class="tab-content-u current-u">{{ name-color }}</p>
+                                 {% else %}
+                                   <p id="product-swatch-name-{{ forloop.index}}-{{ product.id }}-2" class="tab-content-u">{{ name-color }}</p>
+                                {% endif %}
+                              {% endfor %}</span>
+                            </label>
+                          </div>
+                           <div class="price-box">
+                            <span class="">Rs.</span>
+                            {% for products in product.metafields.custom.product_list_color.value %}
+                                {% assign price = products.price | divided_by:100 %}
+                                {% if forloop.index == 1 %}
+                                    <span id="product-price-{{ forloop.index}}-{{ product.id }}-2" data-price-2u="{{ price }}" class="page-step-2-price tab-content-u current-u">{{ price }}</span>
+                                {% else %}
+                                    <span id="product-price-{{ forloop.index}}-{{ product.id }}-2" data-price-2u="{{ price }}" class="page-step-2-price tab-content-u">{{ price }}</span>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                           
+                            </div>
+                    <!--end color  -->
+                         </div>
+                      </div>
+
+                    {% endfor %}
+                   
+                  {% endif %}
+                <!--end product-color  -->
+            {% endfor %}
+              </ul>
+                <div class="m-richtext__button m-sticky-addtocart next-3" data-open="next-3">
+                  <a   class="m-button m-button--primary color-atc m-button--large" style="display: flex; justify-content: space-between; align-items: center; flex-direction: row;">
+                      <span class="total-price-match" data-price--1="" data-price--2="">RS.</span>
+                      <span id="add-to-cart-button" class="total-atc-match">ADD TO CART</span>   
+                  </a>
+              <span id="product1"></span>
+              <span id="product2"></span>
+              </div>
+           </div>
+         </div>
+       </div>
+     </div>
+</div>   
+
+
+<style>
+
+.total-atc-match{
+  cursor: pointer;
+  width: 100%;
+  position: absolute;
+  right: 1%;
+  text-align: right;
+  padding-right: 21px;
+  z-index: 1;
+}
+ul.tabs{
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+ul.tabs li{
+  background: none;
+  color: #222;
+  display: inline-block;
+  padding: 10px 12px;
+  padding-bottom: 0;
+  padding-top: 0;
+  /* cursor: pointer; */
+}
+ul.tabs li.current{
+  color: #222;
+}
+  ul.tabs li.current-b{
+  color: #222;
+}
+.tab-content{
+  display: none;
+}
+.tab-content-b,.tab-content-u3,.tab-content-u{
+   display: none;
+}
+.img-block .tab-content.current{
+  display: block;
+}
+  .img-block .tab-content-b.current-b,.img-block .tab-content-u3.current-u3,.img-block .tab-content-u.current-u{
+  display: block;
+}
+.tab-content.current{
+  display: inherit;
+}
+.img-block{
+  /* background:#b8b8b8; */
+}  
+  .tab-content-b.current-b,.tab-content-u3.current-u3,.tab-content-u.current-u{
+  display: inherit;
+}
+.style-child {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+  /*  */
+    .sizes {
+    display: flex;
+    justify-content: space-evenly;
+    border-top: 1px solid #adadad;
+    border-bottom: 1px solid #adadad;
+    line-height: 0;
+    margin-bottom: -5px;
+    width: 100%;
+}
+  .size-option {
+    display: inline-block;
+    cursor: pointer;
+    border: 0px solid var(--color-border);
+    min-width: 35px;
+    padding: 10px;
+    margin: 0px;
+    font-size: 18px;
+    border-radius: 0px;
+    transition: var(--m-duration-default, .25s) all;
+    text-transform: capitalize;
+    line-height: 1.3;
+    font-family: 'M-Body-Font';
+    padding-bottom: 5px;
+  }
+  .size-option:hover,
+  .main-div:hover,
+  .next-button:hover,
+  .size-guide:hover {
+    background-color: #f0f0f0;
+    cursor: url(https://www.andcircus.com/cdn/shop/files/cursor.png?v=1707133834&width=32) 16 16, auto !important;
+  }
+  .selected-size {
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    border-top: none;
+    border-color: transparent;
+    background: transparent;
+    border-bottom: 6px solid #DCFF9C !important;
+    color: #1e1e1e;
+  }
+  .next-button {
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.3125rem;
+    background-color: #8D9AB7;
+    border-color: #8D9AB7;
+    color: #dcff9c;
+    font-family: 'M-Heading-Font';
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  .next-button:hover {
+    background: #222222;
+    border-color: #222222;
+    color: #ffffff;
+  }
+
+   .style-option {
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px 0px;
+    margin: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    color: #ADADAD;
+    text-align: center;
+    font-family: Manrope;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  /* .style-option:hover {
+    background-color: #f0f0f0;
+  } */
+
+  /* .main-body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: inline;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+  } */  
+  h3.top-text {
+  color: #8d9ab7;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  margin-top: 0px;
+}  
+  h6.bottom-text {
+  display: flex;
+  font-size: 14px;
+  padding-bottom: 0px;
+  font-family: 'Manrope';
+  margin: 22px 0px 30px 0px;
+  color: #696969;
+}
+  h3.grid__item-text {
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    font-family: Manrope;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 175%;
+    margin-bottom: 0px;
+}
+  .heading-text {
+    border-bottom: 0.5px solid #adadad;
+}
+  .style-child {
+    border-bottom: 0.5px solid #adadad;
+}
+  .type_icon_wrapper {
+    border: 1.75px solid #ADADAD;
+    max-width: 45px;
+    margin: 0 auto;
+    border-radius: 30px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+  img.topwear-image {
+    object-fit: contain;
+    width: auto;
+    height: 25px;
+}
+  .style-option p {
+    color: #ADADAD;
+    text-align: center;
+    font-family: Manrope;
+    font-size: 14px;
+    font-weight: 600;
+}
+  h3.size-popup {
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    font-family: Manrope;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 175%;
+    margin-bottom: 10px;
+}
+  .size-guide {
+    text-decoration: underline;
+    color: #D31E4E;
+    text-align: right;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration-line: underline;
+    text-transform: uppercase;
+    margin: auto 0;
+}
+  .selected-size {
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    border-top: none;
+    border-color: transparent;
+    background: transparent;
+    border-bottom: 6px solid #DCFF9C !important;
+    color: #1e1e1e;
+}
+  .selected-size:active{
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    border-top: none;
+    border-color: transparent;
+    background: transparent;
+    border-bottom: 6px solid #DCFF9C !important;
+    color: #1e1e1e;
+}
+  .type_icon_wrapper:hover {
+    box-shadow: 0px 0px 0px 4px #E5E5E5;
+}
+  img.bottomwear-image {
+    object-fit: contain;
+    width: auto;
+    height: 30px;
+    width: 97%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+  .grid__item.img-block {
+    flex: 1;
+    padding: 20px;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+  .data {
+    display: flex;
+    border-radius: 16px 16px 0px 0px;
+    border: 1px solid #D9D9D9;
+    padding: 10px 20px;
+    background: #8d9ab7;
+    align-items: center;
+}
+  .swatch-head, .swatch-heads {
+    display: flex;
+}
+  p.data-opt {
+    margin-right: 2px;
+    color: #FFF;
+    font-family: 'M-Heading-Font';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    text-transform: uppercase;
+}
+  p.data-opt-one {
+    color: #FFF;
+    font-family: 'M-Heading-Font';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    text-transform: uppercase;
+}
+  h3.top-texts {
+    color: #8d9ab7;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    margin-top: 0px;
+    display: flex;
+}
+  h6.bottom-texts {
+    display: flex;
+    font-size: 14px;
+    padding-bottom: 0px;
+    font-family: 'Manrope';
+    margin: 15px 0px 24px 0px;
+    color: #696969;
+}
+  .tab-component.review {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-radius: 0px 0px 16px 16px;
+    border: 1px solid var(--Grey-Grey-1, #D9D9D9);
+    padding: 10px 40px;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+  .tab-component .tabs {
+    overflow-x: auto;
+    flex-flow: nowrap;
+}
+.flex {
+    display: flex;
+}
+.justify-start {
+    justify-content: flex-start;
+}
+.gap-8 {
+    gap: 2rem;
+}
+  .preview_name .type_button {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+    padding-top: 2px;
+    margin-right: 15px;
+    height: auto;
+    width: auto;
+}
+  .review button.tab-button.active {
+    border-color: transparent;
+    background: transparent;
+    border-bottom: 6px solid #DCFF9C !important;
+    color: #1e1e1e;
+}
+.review button.tab-button {
+    order: 0px solid var(--color-border);
+    min-width: 35px;
+    background: transparent;
+    padding: 0px;
+    margin: 0px;
+    font-size: 18px;
+    border-radius: 0px;
+    transition: var(--m-duration-default, .25s) all;
+    text-transform: capitalize;
+    line-height: 1.3;
+    /* border-bottom: 6px solid white; */
+    font-family: 'M-Body-Font';
+    padding-bottom: 5px;
+}
+  .preview_name .tab-button {
+    border: 0px solid #E5E5E5;
+}
+  .tab-button .text-color-black {
+    font-size: 14px;
+    line-height: 18px;
+}
+.mb-4 {
+    margin-bottom: 16px;
+}
+  .flex-col {
+    flex-direction: column;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.flex {
+    display: flex;
+}
+  .mt-4 {
+    margin-top: 1rem;
+}
+.text-left {
+    text-align: left;
+}
+  .prod__option--button {
+    margin: -5px;
+}
+  .review .preview-variant-inner {
+    padding-bottom: 16px;
+    /* border-bottom: 0.4px solid black; */
+}
+.preview-variant-inner {
+    gap: 0px;
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+  .color-img {
+    width: 40px;
+}
+  .m-product-option--label {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    line-height: 24px;
+    /* margin-bottom: 12px; */
+    font-weight: 500;
+    align-items: center;
+    width: 100%;
+    font-family: 'M-Heading-Font';
+    padding-top: 16px;
+    margin-left: -10px;
+    border-top: 0.4px solid black;
+}
+  label.option-label {
+    color: #ADADAD;
+    font-family: Manrope;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 175%;
+}
+  span.type-label--title {
+    color: #ADADAD;
+    font-family: Manrope;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 175%;
+}
+  span.type-label--selected {
+    color: #DFDFDF;
+}
+  img.type_icons.inline-blocks {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 142px !important;
+    border: 1.5px solid #8D9AB7;
+    background: #DFDFDF;
+    margin-right: 5px;
+}
+  /* .tab-link form {
+    display: none;
+} */
+  button.color-button:hover {
+    box-shadow: 0px 0px 0px 2px #E5E5E5;
+}
+.page-3-img-bs{
+  position: relative;
+  top: -100px;
+}
+button.color-button {
+    background: none;
+    border: 3px solid #DFDFDF;
+    border-radius: 240px;
+    padding: 0px;
+    height: 46px;
+    cursor: pointer;
+}
+.current-u3  button.color-button,.current-u button.color-button{
+  border: 3px solid #8d9ab7;
+}
+  .type_icon_wrapper:hover {
+    cursor: url(https://www.andcircus.com/cdn/shop/files/cursor.png?v=1707133834&width=32) 16 16, auto !important;
+}
+  img.color-img:hover {
+    cursor: url(https://www.andcircus.com/cdn/shop/files/cursor.png?v=1707133834&width=32) 16 16, auto !important;
+}
+  .tab-button .text-color-black:hover {
+    cursor: url(https://www.andcircus.com/cdn/shop/files/cursor.png?v=1707133834&width=32) 16 16, auto !important;
+}
+.current .type_icon_wrapper,.current-b .type_icon_wrapper{
+  border: 2.8px solid #8d9ab7;
+  background: #F7F7F7;
+}
+.price-box{
+  display:flex;
+}
+.m-button.m-button--primary {
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.3125rem;
+  background-color: #8D9AB7;
+  border-color: #8D9AB7;
+  color: #dcff9c;
+  font-family: 'M-Heading-Font';
+  font-size: 18px;
+  line-height: 1.5;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+}
+.m-button.m-button--primary:hover {
+  cursor: url(https://www.andcircus.com/cdn/shop/files/cursor.png?v=1707133834&width=32) 16 16, auto !important;
+  /* box-shadow: 0 0 0 0.2rem #222222; */
+  background: #222222;
+  border-color: #222222;
+  color: #ffffff;
+}
+#add-to-cart-button:hover {
+  cursor: url(https://www.andcircus.com/cdn/shop/files/cursor.png?v=1707133834&width=32) 16 16, auto !important;
+}
+</style>
+{% schema %}
+{
+  "name": "step-2-product-form",
+  "tag": "section",
+  "class": "section section-featured-product",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "t:sections.collection-list.blocks.featured_collection.name",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:sections.collection-list.blocks.featured_collection.settings.collection.label"
+        }
+      ]
+    }
+
+  ],
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "2-product-form",
+      "blocks": [
+        
+      ]
+    }
+  ]
+}
+{% endschema %}
